@@ -1,0 +1,17 @@
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.test.deps.json
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.test.runtimeconfig.json
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.test.runtimeconfig.dev.json
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.test.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.test.pdb
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.csprojAssemblyReference.cache
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.csproj.CoreCompileInputs.cache
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.AssemblyInfoInputs.cache
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.AssemblyInfo.cs
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.pdb
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.dll
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\bin\Debug\netcoreapp2.1\simpleapi.pdb
+C:\Users\111105\Desktop\simpleapisln\test\simpleapi.test\obj\Debug\netcoreapp2.1\simpleapi.test.csproj.CopyComplete
