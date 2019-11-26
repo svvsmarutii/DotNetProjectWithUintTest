@@ -32,9 +32,11 @@ steps:
   displayName: 'dotnet test'
 
 - script: 
-    dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
+    dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path . 
     ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
-  
+  displayName: 'Generating Coverage Reports'
+
+
 - task: SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
 
