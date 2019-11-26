@@ -35,7 +35,7 @@ steps:
   inputs:
     reports: 'coverage.opencover.xml'
     targetdir: 'coverage/Cobertura'
-    reporttypes: 'Cobertura;HTMLInline;HTMLChart'"
+    reporttypes: 'Cobertura;HTMLInline;HTMLChart'
   displayName: 'Generating Coverage Reports'
 
 
