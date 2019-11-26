@@ -33,7 +33,7 @@ steps:
     dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
     ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
   
-- task: sonarSource.Sonarcloud.MySonarCloud.SonarC1
+- task: SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
 
 - task: SonarCloudPublish@1
