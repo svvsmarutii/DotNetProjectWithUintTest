@@ -20,7 +20,7 @@ steps:
     organization: 'vcloud'
     scannerMode: 'MSBuild'
     projectKey: 'VProject'
-    projectName: 'DotNetProjectWithUintTest'
+    projectName: 'vproject'
     extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
 
 - script: dotnet build --configuration $(buildConfiguration)
