@@ -14,11 +14,12 @@ variables:
 
 steps:
 
-- task: SonarQubePrepare@4
+- task: SonarCloudPrepare@1
   inputs:
-    SonarQube: 'Sonar_server'
+    SonarCloud: 'MySonarCloud'
+    organization: 'vcloud'
     scannerMode: 'MSBuild'
-    projectKey: 'vproject'
+    projectKey: 'VProject'
     projectName: 'DotNetProjectWithUintTest'
     extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
 
@@ -32,12 +33,11 @@ steps:
     dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
     ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
   
-- task: SonarQubeAnalyze@4
+- task: sonarSource.Sonarcloud.MySonarCloud.SonarC1
   displayName: 'Run Code Analysis'
 
-- task: SonarQubePublish@4
-  inputs:
-    pollingTimeoutSec: '300'
+- task: SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Results'
 
 
 - task: PublishTestResults@2
