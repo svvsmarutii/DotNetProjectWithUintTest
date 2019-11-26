@@ -33,7 +33,7 @@ steps:
 
 - script: 
     dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path . 
-    ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+    .\reportgenerator.exe "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
   displayName: 'Generating Coverage Reports'
 
 
