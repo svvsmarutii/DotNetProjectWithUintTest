@@ -14,14 +14,43 @@ variables:
 
 steps:
 
-- task: DotNetCoreCLI@2
+- task: SonarQubePrepare@4
   inputs:
-    command: test
-    projects: '**/*test/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    SonarQube: 'Sonar_server'
+    scannerMode: 'MSBuild'
+    projectKey: 'vproject'
+    projectName: 'DotNetProjectWithUintTest'
+    extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet test --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/ $(testProject)
+  displayName: 'dotnet test'
+
+- script: 
+    dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
+    ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+  
+- task: SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis'
+
+- task: SonarQubePublish@4
+  inputs:
+    pollingTimeoutSec: '300'
+
+
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    summaryFileLocation: $(Build.SourcesDirectory)/coverage/Cobertura/Cobertura.xml
+    reportDirectory: $(Build.SourcesDirectory)/coverage/Cobertura
+    codecoverageTool: cobertura
 
 - task: DotNetCoreCLI@2
   displayName: 'Creating Artifacts and making package'
