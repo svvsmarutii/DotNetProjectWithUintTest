@@ -41,7 +41,7 @@ steps:
 
 - task: reportgenerator@4
   inputs:
-    reports: 'coverage/coverage.opencover.xml'
+    reports: '$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
     targetdir: 'coverage/Cobertura'
     reporttypes: 'Cobertura;HTMLInline;HTMLChart'
   displayName: 'Generating Coverage Reports'
