@@ -28,12 +28,20 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/$(testProject)
-  displayName: 'dotnet test'
+#- script: dotnet test --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/$(testProject)
+#  displayName: 'dotnet test'
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(testProject)'
+    arguments: '--logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/$(testProject)'
+
 
 - task: reportgenerator@4
   inputs:
-    reports: 'coverage/test/simpleapi.test/coverage.xml'
+    reports: 'coverage/test/simpleapi.test/coverage.opencover.xml'
     targetdir: 'coverage/Cobertura'
     reporttypes: 'Cobertura;HTMLInline;HTMLChart'
   displayName: 'Generating Coverage Reports'
