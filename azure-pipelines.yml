@@ -31,6 +31,20 @@ steps:
 - script: dotnet test --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/ $(testProject)
   displayName: 'dotnet test'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Creating Artifacts and making package'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'src/simpleapi/simpleapi.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Pubish Artifacts'
+
+
+
 
 #- task: DotNetCoreCLI@2
 #  inputs:
@@ -66,16 +80,6 @@ steps:
     reportDirectory: $(Build.SourcesDirectory)/coverage/Cobertura
     codecoverageTool: cobertura
 
-- task: DotNetCoreCLI@2
-  displayName: 'Creating Artifacts and making package'
-  inputs:
-    command: publish
-    publishWebProjects: false
-    projects: 'src/simpleapi/simpleapi.csproj'
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: true
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Pubish Artifacts'
 
 
